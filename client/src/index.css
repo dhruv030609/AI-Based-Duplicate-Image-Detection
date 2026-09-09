@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #fafbfc;
+  --foreground: #172033;
+  --card: #ffffff;
+  --card-foreground: #172033;
+  --popover: #ffffff;
+  --popover-foreground: #172033;
+  --primary: #1957d2;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f3f6;
+  --secondary-foreground: #172033;
+  --muted: #f1f3f6;
+  --muted-foreground: #7c8799;
+  --accent: #eef3ff;
+  --accent-foreground: #1957d2;
+  --destructive: #c7472e;
+  --destructive-foreground: #ffffff;
+  --border: #e4e8ee;
+  --input: #d7dce5;
+  --ring: #1957d2;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button, input { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid rgba(25,87,210,.35); outline-offset: 3px; }
+::selection { background: #bcd0ff; color: #173b8c; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main > section { animation: rise-in 500ms cubic-bezier(.23,1,.32,1) both; }
+main > section:nth-child(2) { animation-delay: 60ms; }
+main > section:nth-child(3) { animation-delay: 100ms; }
+main > section:nth-child(4) { animation-delay: 140ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 3.6rem; }
+}
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #f1f3f6; }
+::-webkit-scrollbar-thumb { border: 3px solid #f1f3f6; border-radius: 999px; background: #c5cbd5; }
+::-webkit-scrollbar-thumb:hover { background: #9ca6b5; }
+
+input[type="range"] { height: 5px; border-radius: 999px; }
+
+/* Keep the results and lower information sections visually consistent with the light landing page. */
+[class*="bg-[#fbf9f5]"] { background-color: #ffffff !important; }
+[class*="bg-[#efeae2]"] { background-color: #f3f6fb !important; }
+[class*="bg-[#292621]"] { background-color: #1957d2 !important; }
+[class*="hover:bg-[#292621]"]:hover { background-color: #1146b5 !important; }
+[class*="border-[#ded8ce]"] { border-color: #e4e8ee !important; }
+[class*="border-[#eee8df]"] { border-color: #eef1f5 !important; }
